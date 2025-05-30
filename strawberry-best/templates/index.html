@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>🍓 StrawberryBest — твой лучший выбор</title>
+    <link rel="stylesheet" href="/static/glitter.css">
+    <style>
+
+        .menu a {
+            display: block;
+            margin: 1rem;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <h1>🍓 Добро пожаловать в StrawberryBest! 🍓</h1>
+        <p>🌈 Здесь живёт твоя клубничная сущность. Раскрой её вместе с нами 💫</p>
+
+        <div class="menu">
+            <a href="/login">📲 Войти</a>
+            <a href="/register">📝 Зарегистрироваться</a>
+            <a href="/hall_of_fame">🌟 Доска славы</a>
+        </div>
+    </div>
+
+    <script>
+        const uid = localStorage.getItem("authorized");
+        if (uid) {
+            const link = document.createElement("a");
+            link.href = `/profile/${uid}`;
+            link.textContent = "💖 Перейти в профиль";
+            link.style.display = "block";
+            link.style.marginTop = "1rem";
+            document.querySelector(".menu").appendChild(link);
+        }
+    </script>
+</body>
+</html>

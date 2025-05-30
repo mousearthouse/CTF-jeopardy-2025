@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>🍓 Профиль {{ username }}</title>
+    <link rel="stylesheet" href="/static/glitter.css">
+    <script>
+        window.onload = function () {
+            const uid = localStorage.getItem("authorized");
+            if (uid === "{{ user_id|string }}") {
+                document.getElementById("page").style.display = "block";
+            } else {
+                document.body.innerHTML = "<h1>⛔ Доступ запрещён! Это не твой профиль!</h1>";
+                document.getElementById("page").style.display = "block"
+            }
+        };
+    </script>
+</head>
+<body id="page" style="display:none;">
+    <h1>🌸 Привет, {{ username }}!</h1>
+
+    <h2>🧾 Твой клубничный манифест:</h2>
+    <div class="manifest">
+        {{ rendered_manifest | safe }}
+    </div>
+
+    <br>
+    <form method="POST">
+        <label for="manifest">Обновить манифест:</label><br>
+        <textarea name="manifest" rows="4" cols="50">{{ original_manifest }}</textarea><br><br>
+        <input type="submit" value="Сохранить 🍓">
+    </form>
+    <br><br>
+    <a href="http://t.me/strrwb3rry_bot" target="_blank">Больше подробностей в нашем клубничном ботике</a>
+    <br><br>
+    <a href="/hall_of_fame">← назад к доске славы</a>
+</body>
+</html>

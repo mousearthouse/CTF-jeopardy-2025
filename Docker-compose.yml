@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  strawberry-best:
+    build: ./strawberry-best
+    container_name: strawberry-best
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+
+  reveal-site:
+    build: ./reveal-site
+    container_name: reveal-site
+    ports:
+      - "5002:5002"
+    restart: unless-stopped
+
+  strawberry-bot:
+    build:
+      context: ./bot
+      dockerfile: Dockerfile
+    container_name: strawberry-bot
+    restart: unless-stopped
